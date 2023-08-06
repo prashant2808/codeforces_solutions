@@ -1,0 +1,30 @@
+import java.util.*;
+public class solution {
+    public static void main(String [] args) {
+        Scanner sc = new Scanner(System.in);
+         String s=sc.next();
+         String ans="";
+         int i=0;
+         while(i<s.length())
+         {
+             char ch=s.charAt(i);
+             if(ch=='.')
+             {
+                 ans+=0;
+                 i+=1;
+             }
+             else if( ch =='-')
+             {
+                 if(s.charAt(i+1)=='.')
+                 {
+                     ans+=1;
+                 }
+                 else ans+=2;
+                 i+=2;
+             }
+         }
+        System.out.println(ans);
+ 
+ 
+    }
+}
