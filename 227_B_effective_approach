@@ -1,0 +1,29 @@
+import java.util.*;
+ public class solution {
+    public static void main(String [] args) {
+        Scanner sc = new Scanner(System.in);
+          int n=sc.nextInt();
+          int [] arr= new int [n];
+          for(int i=0;i<n;i++)
+          {
+              arr[i]=sc.nextInt();
+          }
+          HashMap<Integer,Integer> map= new HashMap<>();
+          for(int i=0;i<n;i++)
+          {
+              map.put(arr[i],i);
+          }
+          long vas=0;
+          long pet=0;
+          int m=sc.nextInt();
+          while(m-->0)
+          {
+              int b=sc.nextInt();
+              vas+=map.get(b)+1;
+              pet+=n-map.get(b);
+ 
+          }
+        System.out.println(vas+" "+pet);
+ 
+    }
+}
