@@ -1,0 +1,23 @@
+import java.util.*;
+public class solution {
+    public static void main(String [] args) {
+        Scanner sc = new Scanner(System.in);
+          int y =sc.nextInt();
+          int ny=y+1;
+          while(!dist(ny))
+              ny++;
+        System.out.println(ny);
+ 
+ 
+    }
+    public static boolean dist(int y)
+    {
+         HashSet<Integer>set = new HashSet<>();
+         while(y!=0)
+         {
+             set.add(y%10);
+             y/=10;
+         }
+         return set.size()==4;
+    }
+}
