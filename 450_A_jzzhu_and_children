@@ -1,0 +1,38 @@
+import java.util.*;
+ public class solution {
+    public static void main(String [] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        Queue<Pair>q= new LinkedList<>();
+        for(int i=1;i<=n;i++)
+        {
+            int a= sc.nextInt();
+            q.offer(new Pair(i,a));
+        }
+        int ans=-1;
+        while(q.size()!=1)
+        {
+            Pair p= q.poll();
+            int i=p.i;
+            int x= p.a;
+            x-=m;
+            if(x>0)q.offer(new Pair(i,x));
+ 
+ 
+        }
+        ans=q.poll().i;
+        System.out.println(ans);
+ 
+ 
+    }
+ public static  class Pair{
+    int i;
+    int a;
+    public Pair(int i,int a)
+    {
+        this.i=i;
+        this.a=a;
+    }
+}
+}
