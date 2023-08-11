@@ -1,0 +1,38 @@
+import java.util.Arrays;
+import java.util.Scanner;
+ 
+public class Main {
+    public static void main(String[] args) {
+        solve();
+    }
+ 
+    public static void solve() {
+        Scanner scanner = new Scanner(System.in);
+        long n = scanner.nextLong();
+        long[] arr = new long[(int) n];
+ 
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextLong();
+        }
+ 
+        Arrays.sort(arr);
+        long count = 0, count2 = 0;
+ 
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == arr[0]) {
+                count++;
+            }
+            if (arr[i] == arr[(int) (n - 1)]) {
+                count2++;
+            }
+        }
+ 
+        if (arr[0] == arr[(int) (n - 1)]) {
+            System.out.println((arr[(int) (n - 1)] - arr[0]) + " " + n * (n - 1) / 2);
+        } else {
+            System.out.println((arr[(int) (n - 1)] - arr[0]) + " " + count * count2);
+        }
+ 
+        scanner.close();
+    }
+}
