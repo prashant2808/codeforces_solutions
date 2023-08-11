@@ -1,0 +1,21 @@
+import java.util.*;
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Long n=sc.nextLong();
+        int lucky=0;
+        while(n!=0)
+        {
+            if(n%10==4||n%10==7)
+            {
+                 lucky++;
+            }
+            n/=10;
+        }
+         if(lucky==4||lucky==7) System.out.println("YES");
+         else System.out.println("NO");
+ 
+    }
+ 
+ 
+ }
