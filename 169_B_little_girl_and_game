@@ -1,0 +1,20 @@
+import java.util.*;
+public  class Solution {
+ 
+      public static void main(String[] args) {
+          Scanner sc = new Scanner(System.in);
+          String s = sc.nextLine();
+          Map<Character, Integer> map = new HashMap<>();
+          for (int i = 0; i < s.length(); i++) {
+              char ch = s.charAt(i);
+              map.put(ch, map.getOrDefault(ch, 0) + 1);
+          }
+          int countodd=0;
+          for(Map.Entry<Character,Integer>en:map.entrySet())
+          {
+              if(en.getValue()%2==1)countodd++;
+          }
+          if(countodd==0||countodd%2==1) System.out.println("First");
+          else System.out.println("Second");
+      }
+  }
