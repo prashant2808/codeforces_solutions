@@ -1,0 +1,13 @@
+import java.util.*;
+ public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s=sc.nextLine();
+        String st=s.substring(0,1);
+        st=st.toUpperCase();
+        s=st+s.substring(1,s.length());
+        System.out.println(s);
+    }
+ 
+ 
+ }
