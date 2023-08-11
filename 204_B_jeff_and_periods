@@ -1,0 +1,75 @@
+import java.util.*;
+ public class Solution {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        int [] arr= new int [n];
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        HashMap<Integer,PriorityQueue<Integer>> map= new HashMap<>();
+        for(int i=0;i<n;i++)
+        {
+            if(map.containsKey(arr[i]))
+            {
+                 PriorityQueue<Integer> pq= map.get(arr[i]);
+                 pq.offer(i);
+                 map.put(arr[i],pq);
+            }
+            else
+            {
+                PriorityQueue<Integer>pq= new PriorityQueue<>();
+                pq.offer(i);
+                map.put(arr[i],pq);
+            }
+        }
+        List<Pair> res= new ArrayList<>();
+        for(Map.Entry<Integer,PriorityQueue<Integer>> en: map.entrySet())
+        {
+            int key=en.getKey();
+            PriorityQueue<Integer> occ=en.getValue();
+            if(occ.size()==1)
+            {
+                 res.add(new Pair(key,0));
+            }
+            else {
+               int  diff=checkap(occ);
+               if(diff!=-1) res.add(new Pair(key,diff));
+ 
+            }
+        }
+        Collections.sort(res,(a,b)->{
+            return a.x-b.x;
+        });
+        System.out.println(res.size());
+        {
+            for(int i=0;i<res.size();i++)
+                System.out.println(res.get(i).x+" "+res.get(i).diff);
+        }
+ 
+    }
+    static int checkap(PriorityQueue<Integer>pq)
+    {
+        int a=pq.poll();
+        int b=pq.poll();
+        int diff=b-a;
+        while(!pq.isEmpty())
+        {
+            int x=pq.poll();
+            if(x-b!=diff)return -1;
+            b=x;
+        }
+        return diff;
+    }
+ 
+    static class Pair{
+        int x;
+        int diff;
+        public Pair(int x,int diff){
+            this.x=x;
+            this.diff=diff;
+        }
+    }
+ }
+ 
