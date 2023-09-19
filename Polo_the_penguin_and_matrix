@@ -1,0 +1,40 @@
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int no_of_rows, no_of_columns, difference;
+        no_of_rows = scanner.nextInt();
+        no_of_columns = scanner.nextInt();
+        difference = scanner.nextInt();
+
+        int[] A = new int[no_of_rows * no_of_columns];
+
+        Set<Integer> remainder = new HashSet<>();
+
+        boolean possible = true;
+        for (int i = 0; i < no_of_rows * no_of_columns; i++) {
+            A[i] = scanner.nextInt();
+
+            remainder.add(A[i] % difference);
+        }
+
+        if (remainder.size() > 1)
+            possible = false;
+
+        Arrays.sort(A);
+
+        int middle = A.length / 2;
+        int median = A[middle];
+
+        int minimum_no_of_moves = 0;
+        for (int i = 0; i < A.length; i++)
+            minimum_no_of_moves += Math.abs(A[i] - median) / difference;
+
+        System.out.println(possible ? minimum_no_of_moves : -1);
+    }
+}
