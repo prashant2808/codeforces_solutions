@@ -1,0 +1,30 @@
+import java.util.*;
+public class tetrahedron {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        /*
+        there can be only two states either at the top (or the destination) or the bottom ( the other three states
+        are identical as they are at the bottom ) so we can take the dp of size [2][n+1] as prior( row) will  tell the state
+        at the current value of n
+
+         */
+        long [][] dp= new long [2][n+1];
+        dp[1][0]=1;   // when n=0 means no steps we can reach to 1 with one way ( dont move at all)
+        dp[0][0]=0;   // if n=0  and we are at other state so ways =0
+        for(int i=1;i<=n;i++){
+
+
+            dp[1][i]=(3*dp[0][i-1])%1000000007; // from the top state we can move to either of other three states
+            // so we take dp[0][i-1] as 0 denote the other state and we have 3 ways so multiply by three
+
+            dp[0][i]=(2*dp[0][i-1]+dp[1][i-1])%1000000007;
+            // at the bottom state either we can go to the other two state or to the top so -> 2* dp[0][i-1] for the other two
+            // and dp[1][i-1] for going to the top
+        }
+        System.out.println(dp[1][n]);
+    }
+    // in the tetrahedron we have two places either it is at top where it has to come at last or ant can be at the bottom
+    // so at bottom we have three choices and one at top
+
+}
