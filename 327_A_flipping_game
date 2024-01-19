@@ -1,0 +1,27 @@
+import java.util.Scanner;
+ 
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+ 
+        int n = scanner.nextInt();
+        int a, count1 = 0, extra0 = 0, extra0max = -1;
+ 
+        while (n-- > 0) {
+            a = scanner.nextInt();
+            if (a == 1) {
+                count1 += 1;
+                if (extra0 > 0) {
+                    extra0 -= 1;
+                }
+            } else {
+                extra0 += 1;
+                if (extra0 > extra0max) {
+                    extra0max = extra0;
+                }
+            }
+        }
+ 
+        System.out.println(count1 + extra0max);
+    }
+}
