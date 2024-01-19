@@ -1,0 +1,19 @@
+import java.util.*;
+public class tetrahedron {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+         int k=sc.nextInt();
+         int i=1;
+         int j=n;
+         while(n-->0){
+             if(k>0){
+                 System.out.print(j--+" ");
+                 k--;
+             }
+             else {
+                 System.out.print(i++ +" ");
+             }
+         }
+    }
+}
