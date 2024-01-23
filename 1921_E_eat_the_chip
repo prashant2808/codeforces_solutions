@@ -1,0 +1,61 @@
+ 
+import java.util.*;
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+ 
+        int t=sc.nextInt();
+        while(t-->0) {
+            int h=sc.nextInt();
+            int w=sc.nextInt();
+            int xa=sc.nextInt();
+            int ya=sc.nextInt();
+            int xb=sc.nextInt();
+            int yb=sc.nextInt();
+            int diff=xb-xa;
+            if(xb<=xa) {
+                System.out.println("Draw");
+                continue;
+            }
+            int bob_moves=diff/2;
+            int alice_moves=bob_moves+1;
+            if(diff%2==1){   //alice attack
+ 
+                if(ya==yb) System.out.println("Alice");
+                else if(ya>yb){
+                    int bob_col=Math.max(1,yb-bob_moves);
+                    int alice_col=Math.max(1,ya-alice_moves);
+                    if(alice_col<=bob_col) System.out.println("Alice");
+                    else System.out.println("Draw");
+                }
+                else {
+                    int bob_col=Math.min(w,yb+bob_moves);
+                    int alice_col=Math.min(w,ya+alice_moves);
+                    if(alice_col>=bob_col) System.out.println("Alice");
+                    else System.out.println("Draw");
+ 
+                }
+            }
+            else {
+                if(ya==yb) System.out.println("Bob");
+                else if(ya>yb){
+                    int bob_col=Math.min(w,yb+bob_moves);
+                    int alice_col=Math.min(w,ya+alice_moves);
+                    if(bob_col>=alice_col) System.out.println("Bob");
+                    else System.out.println("Draw");
+                }
+                else {
+                    int bob_col=Math.max(1,yb-bob_moves);
+                    int alice_col=Math.max(1,ya-alice_moves);
+                    if(bob_col<=alice_col) System.out.println("Bob");
+                    else System.out.println("Draw");
+ 
+                }
+            }
+ 
+ 
+ 
+        }
+ 
+    }
+}
