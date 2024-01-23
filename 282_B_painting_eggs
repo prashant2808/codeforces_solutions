@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cstdlib>
+ 
+using namespace std;
+ 
+int main() {
+    int n;
+    cin >> n;
+ 
+    int asum = 0;
+    int gsum = 0;
+    bool flag = true;
+    string ans = "";
+ 
+    for (int i = 0; i < n; i++) {
+        int aprice, gprice;
+        cin >> aprice >> gprice;
+ 
+        if (abs(asum + aprice - gsum) <= 500) {
+            asum += aprice;
+            ans += 'A';
+        } else if (abs(gsum + gprice - asum) <= 500) {
+            gsum += gprice;
+            ans += 'G';
+        } else {
+            cout << -1 << endl;
+            flag = false;
+            break;
+        }
+    }
+ 
+    if (flag)
+        cout << ans << endl;
+ 
+    return 0;
+}
