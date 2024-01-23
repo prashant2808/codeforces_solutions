@@ -1,0 +1,79 @@
+<------ TABULATION O(N) SPACE ------>
+#include <iostream>
+#include <vector>
+#include <set>
+
+using namespace std;
+
+ 
+
+int main() {
+    int n;
+    cin >>n ;
+
+     
+
+    // vector<vector<int>> dp(n + 1, vector<int>(x + 1, 0));
+
+    vector<int>dp(n+1,1e9);
+    dp[0]=0;
+    for(int i=1;i<=n;i++){
+      string a=to_string(i);
+      for(char ch:a){
+        int digit=ch-'0';
+        if(digit!=0){
+          dp[i]=min(dp[i],dp[i-digit]+1);
+        }
+      }
+    }
+      
+
+    cout <<dp[n]<< endl;
+
+    return 0;
+    
+} 
+<-------MEMOIZATON--------->
+  #include <iostream>
+#include <vector>
+#include <set>
+ 
+using namespace std;
+ 
+int helper(int n,vector<int>& dp){
+  if(n==0)return 0;
+  if(dp[n]!=-1)return dp[n];
+  int x=n;
+  std::set<int> s;
+  while(x>0){
+    s.insert(x%10);
+    x=x/10;
+  }
+  int ways=1e9;
+  for(int t:s){
+    if(t!=0){
+      ways=min(ways,1+helper(n-t,dp));
+    }
+  }
+  return dp[n]=ways;
+ 
+ 
+}
+ 
+ 
+int main() {
+    int n;
+    cin >>n ;
+ 
+     
+ 
+    // vector<vector<int>> dp(n + 1, vector<int>(x + 1, 0));
+ 
+    vector<int>dp(n+1,-1);
+      
+ 
+    cout <<  helper(n,dp)<< endl;
+ 
+    return 0;
+    
+}
